@@ -17,7 +17,7 @@ flags.DEFINE_integer("test_epoch", 100, "Epoch for latent mapping in anomaly det
 flags.DEFINE_float("learning_rate", 0.0002, "Learning rate of for adam [0.0002]")
 flags.DEFINE_float("beta1", 0.5, "Momentum term of adam [0.5]")
 flags.DEFINE_float("test_learning_rate", 0.001, "Learning rate for finding latent variable z [0.05]")
-flags.DEFINE_integer("train_size", np.inf, "The size of train images [np.inf]")
+flags.DEFINE_integer("train_size", 1000, "The size of train images [np.inf]")
 flags.DEFINE_boolean("train", False, "True for training, False for testing [False]")
 flags.DEFINE_boolean("anomaly_test", False, "True for anomaly test in test directory, not anomaly test [False]")
 flags.DEFINE_boolean("visualize", False, "True for visualizing, False for nothing [False]")
