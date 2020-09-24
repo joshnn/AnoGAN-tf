@@ -112,8 +112,8 @@ def main(_):
       dcgan.anomaly_detector()
       assert len(dcgan.test_data_names) > 0
       for idx in range(len(dcgan.test_data_names)):
-	test_input = np.expand_dims(dcgan.test_data[idx],axis=0)
-	test_name = dcgan.test_data_names[idx]
+        test_input = np.expand_dims(dcgan.test_data[idx],axis=0)
+        test_name = dcgan.test_data_names[idx]
         dcgan.train_anomaly_detector(FLAGS, test_input, test_name)
 
     # Below is codes for visualization
