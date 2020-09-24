@@ -6,6 +6,7 @@ from glob import glob
 import tensorflow as tf
 import numpy as np
 from six.moves import xrange
+import imageio
 
 from ops import *
 from utils import *
@@ -535,8 +536,8 @@ class DCGAN(object):
           os.mkdir(path)
         filename = ['AD_'+str(epoch)+'_'+test_data_name.split('/')[-1], 'AD_error_'+str(epoch)+'_'+test_data_name.split('/')[-1]]
 
-        scipy.misc.imsave(os.path.join(path,filename[0]),samples)
-        scipy.misc.imsave(os.path.join(path,filename[1]),errors)
+        imageio.imsave(os.path.join(path,filename[0]),samples)
+        imageio.imsave(os.path.join(path,filename[1]),errors)
         #np.save('./{}/test_error_{}_{:02d}.png'.format(config.test_dir, test_data_name, epoch), errors)
 
   def load_mnist(self):
@@ -592,12 +593,15 @@ class DCGAN(object):
 
     self.saver.save(self.sess,
             os.path.join(checkpoint_dir, model_name),
-            global_step=step)
+            global_step=step,
+            write_state=True)
 
   def load(self, checkpoint_dir):
     import re
     print(" [*] Reading checkpoints...")
     checkpoint_dir = os.path.join(checkpoint_dir, self.model_dir)
+    checkpoint_dir = 'checkpoint/mnist_64_28_28'
+    print(checkpoint_dir)
 
     ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
     if ckpt and ckpt.model_checkpoint_path:
