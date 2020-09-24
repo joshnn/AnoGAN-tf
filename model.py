@@ -525,7 +525,7 @@ class DCGAN(object):
         print(np.shape(samples))
         samples = np.squeeze(samples)
         samples = (np.array(samples)+1)*127.5
-	if not self.grayscale:
+        if not self.grayscale:
           errors = np.mean(np.squeeze(errors),axis=2)
         errors = (np.array(errors)+1)*127.5
 
